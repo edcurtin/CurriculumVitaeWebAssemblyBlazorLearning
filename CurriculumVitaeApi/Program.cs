@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.CreateMap<CVOwnerDto, CVOwnerModelDao>().ReverseMap();
+    cfg.CreateMap<EmploymentHistoryDto, EmploymentHistoryDao>().ReverseMap();
 });
 
 IMapper mapper = mapperConfig.CreateMapper();
@@ -23,6 +24,7 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<ICVOwnersData, CVOwnersData>();
+builder.Services.AddSingleton<IEmploymentHistoryData, EmploymentHistoryData>();
 
 builder.Services.AddCors(policy =>
 {

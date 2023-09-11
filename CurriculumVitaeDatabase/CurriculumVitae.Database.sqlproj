@@ -63,6 +63,9 @@
     <Build Include="EmploymentHistory.sql" />
     <Build Include="StoredProcedures\sp_CVOwner_Insert.sql" />
     <Build Include="StoredProcedures\sp_CVOwners_GetAll.sql" />
+    <Build Include="StoredProcedures\sp_EmploymentHistory_Insert.sql" />
+    <Build Include="StoredProcedures\sp_EmploymentHistory_GetAll.sql" />
+    <Build Include="StoredProcedures\sp_EmploymentHistory_GetById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CurriculumVitaeDatabase.publish.xml" />

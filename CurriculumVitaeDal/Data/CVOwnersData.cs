@@ -19,8 +19,7 @@ namespace CurriculumVitae.Dal.Data
 
         public async Task<IEnumerable<CVOwnerDto>> GetCvOwners()
         {
-            var test = await _sql.GetData<CVOwnerDto>("dbo.sp_CVOwners_GetAll");
-            return test;
+            return await _sql.GetData<CVOwnerDto>("dbo.sp_CVOwners_GetAll");
         }
 
         public async Task InsertCVOwner(CVOwnerDto cvOwner)
