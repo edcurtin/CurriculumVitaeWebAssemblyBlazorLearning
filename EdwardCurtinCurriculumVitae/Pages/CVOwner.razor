@@ -1,0 +1,58 @@
+﻿@using CurriculumVitae.Common.DTO;
+@using EdwardCurtinCurriculumVitae.Services;
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> Localize
+
+@if (cvOwners == null)
+{
+    <Loading IsVisible=true/>
+}
+else
+{
+    if (cvOwners.Count == 0)
+    {
+        <p><em>No Records in Database</em></p>
+    }
+    else
+    {
+        <table border="0">
+            <tr>
+                <th><h2>@cvOwners[0].Name</h2></th>
+            </tr>
+            <tr>
+                <td>@Localize["Address"]</td>
+                <td>@cvOwners[0].Address</td>
+            </tr>
+            <tr>
+                <td>@Localize["DateOfBirth"]</td>
+                <td>@cvOwners[0].DateOfBirth.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td>@Localize["Email"]</td>
+                <td><a href="mailto:@cvOwners[0].Email">@cvOwners[0].Email</a></td>
+            </tr>
+            <tr>
+                <td>@Localize["LinkedIn"]</td>
+                <td><a href="@cvOwners[0].LinkedIn">@cvOwners[0].LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>@Localize["WorkingModel"]</td>
+                <td>@cvOwners[0].WorkingModel</td>
+            </tr>
+
+        </table>
+    }
+}
+
+
+@code {
+    [Inject]
+    ICvOwnerService CVOwnerService { get; set; }
+
+    private List<CVOwnerDto>? cvOwners;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await CVOwnerService.GetCvOwners();
+        cvOwners = new List<CVOwnerDto>(data);
+    }
+}
