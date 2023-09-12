@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 var mapperConfig = new MapperConfiguration(cfg =>
 {
-    cfg.CreateMap<CVOwnerDto, CVOwnerModelDao>().ReverseMap();
+    cfg.CreateMap<CVOwnerDto, CVOwnerDao>().ReverseMap();
     cfg.CreateMap<EmploymentHistoryDto, EmploymentHistoryDao>().ReverseMap();
 });
 

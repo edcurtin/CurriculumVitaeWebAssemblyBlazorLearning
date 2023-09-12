@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CurriculumVitae.Common.DAO
 {
-    public class CVOwnerModelDao
+    public class CVOwnerDao
     {
         public string Name { get; set; }
 

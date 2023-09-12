@@ -1,4 +1,5 @@
-﻿using CurriculumVitae.Common.DTO;
+﻿using CurriculumVitae.Common.DAO;
+using CurriculumVitae.Common.DTO;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,12 @@ namespace CurriculumVitae.Dal.Data
             _sql = sql;
         }
 
-        public async Task<IEnumerable<CVOwnerDto>> GetCvOwners()
+        public async Task<IEnumerable<CVOwnerDao>> GetCvOwners()
         {
-            return await _sql.GetData<CVOwnerDto>("dbo.sp_CVOwners_GetAll");
+            return await _sql.GetData<CVOwnerDao>("dbo.sp_CVOwners_GetAll");
         }
 
-        public async Task InsertCVOwner(CVOwnerDto cvOwner)
+        public async Task InsertCVOwner(CVOwnerDao cvOwner)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add(@"Id", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);

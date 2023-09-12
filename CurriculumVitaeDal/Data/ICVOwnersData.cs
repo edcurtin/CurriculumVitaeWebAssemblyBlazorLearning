@@ -1,10 +1,10 @@
-﻿using CurriculumVitae.Common.DTO;
+﻿using CurriculumVitae.Common.DAO;
 
 namespace CurriculumVitae.Dal.Data
 {
     public interface ICVOwnersData
     {
-        Task<IEnumerable<CVOwnerDto>> GetCvOwners();
-        Task InsertCVOwner(CVOwnerDto cvOwner);
+        Task<IEnumerable<CVOwnerDao>> GetCvOwners();
+        Task InsertCVOwner(CVOwnerDao cvOwner);
     }
 }

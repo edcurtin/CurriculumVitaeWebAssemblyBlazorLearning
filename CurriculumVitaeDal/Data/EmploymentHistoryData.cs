@@ -1,4 +1,5 @@
-﻿using CurriculumVitae.Common.DTO;
+﻿using CurriculumVitae.Common.DAO;
+using CurriculumVitae.Common.DTO;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,17 @@ namespace CurriculumVitae.Dal.Data
             _sql = sql;
         }
 
-        public Task<IEnumerable<EmploymentHistoryDto>> GetEmploymentHistory()
+        public async Task<IEnumerable<EmploymentHistoryDao>> GetEmploymentHistory()
+        {
+            return await _sql.GetData<EmploymentHistoryDao>("dbo.sp_EmploymentHistory_GetAll");
+        }
+
+        public Task<IEnumerable<EmploymentHistoryDao>> GetEmploymentHistory(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<EmploymentHistoryDto>> GetEmploymentHistory(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task InsertEmploymentHistory(EmploymentHistoryDto empHistory)
+        public async Task InsertEmploymentHistory(EmploymentHistoryDao empHistory)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add(@"Id", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);

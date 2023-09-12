@@ -9,8 +9,6 @@ namespace CurriculumVitae.Common.DTO
 {
     public class EmploymentHistoryDto
     {
-        public int Id { get; set; }
-
         public int Owner { get; set; }
 
         public string Role { get; set; }

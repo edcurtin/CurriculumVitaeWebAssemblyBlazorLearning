@@ -20,14 +20,14 @@ namespace CurriculumVitae.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<EmploymentHistoryDao>> EmploymentHistory()
+        public async Task<IEnumerable<EmploymentHistoryDto>> EmploymentHistory()
         {
-             IList<EmploymentHistoryDao> employmentHistory = new List<EmploymentHistoryDao>();
+             IList<EmploymentHistoryDto> employmentHistory = new List<EmploymentHistoryDto>();
 
             var employmentHistoryFromDb = await _empHistory.GetEmploymentHistory();
             foreach (var empHistory in employmentHistoryFromDb)
             {
-                var entity = _mapper.Map<EmploymentHistoryDto, EmploymentHistoryDao>(empHistory);
+                var entity = _mapper.Map<EmploymentHistoryDao, EmploymentHistoryDto>(empHistory);
                 employmentHistory.Add(entity);
             }
 
@@ -35,14 +35,14 @@ namespace CurriculumVitae.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IEnumerable<EmploymentHistoryDao>> EmploymentHistory(int id)
+        public async Task<IEnumerable<EmploymentHistoryDto>> EmploymentHistory(int id)
         {
-            IList<EmploymentHistoryDao> employmentHistory = new List<EmploymentHistoryDao>();
+            IList<EmploymentHistoryDto> employmentHistory = new List<EmploymentHistoryDto>();
 
             var employmentHistoryFromDb = await _empHistory.GetEmploymentHistory(id);
             foreach (var empHistory in employmentHistoryFromDb)
             {
-                var entity = _mapper.Map<EmploymentHistoryDto, EmploymentHistoryDao>(empHistory);
+                var entity = _mapper.Map<EmploymentHistoryDao, EmploymentHistoryDto>(empHistory);
                 employmentHistory.Add(entity);
             }
 
@@ -51,9 +51,9 @@ namespace CurriculumVitae.Api.Controllers
 
         // POST api/<EmploymentHistoryController>
         [HttpPost]
-        public async Task PostAsync([FromBody] EmploymentHistoryDao model)
+        public async Task PostAsync([FromBody] EmploymentHistoryDto model)
         {
-            var entityForDb = _mapper.Map<EmploymentHistoryDao, EmploymentHistoryDto>(model);
+            var entityForDb = _mapper.Map<EmploymentHistoryDto, EmploymentHistoryDao>(model);
 
             await _empHistory.InsertEmploymentHistory(entityForDb);
         }

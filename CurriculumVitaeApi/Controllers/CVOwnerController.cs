@@ -23,14 +23,14 @@ namespace CurriculumVitae.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CVOwnerModelDao>> GetAllCvOwners()
+        public async Task<IEnumerable<CVOwnerDto>> GetAllCvOwners()
         {
-            IList<CVOwnerModelDao> cvOwners = new List<CVOwnerModelDao>();
+            IList<CVOwnerDto> cvOwners = new List<CVOwnerDto>();
 
             var cvOwnersList = await _db.GetCvOwners();
             foreach(var owner in cvOwnersList)
             {
-                var entity = _mapper.Map<CVOwnerDto, CVOwnerModelDao>(owner);
+                var entity = _mapper.Map<CVOwnerDao, CVOwnerDto>(owner);
                 cvOwners.Add(entity);
             }
 
@@ -39,9 +39,9 @@ namespace CurriculumVitae.Api.Controllers
 
         // POST api/<CVOwerController>
         [HttpPost]
-        public async Task PostAsync([FromBody] CVOwnerModelDao model)
+        public async Task PostAsync([FromBody] CVOwnerDto model)
         {
-            var entityForDb = _mapper.Map<CVOwnerModelDao, CVOwnerDto>(model);
+            var entityForDb = _mapper.Map<CVOwnerDto, CVOwnerDao>(model);
 
             await _db.InsertCVOwner(entityForDb);
         }

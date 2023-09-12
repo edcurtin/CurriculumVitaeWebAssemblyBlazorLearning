@@ -1,4 +1,5 @@
-﻿using CurriculumVitae.Common.DTO;
+﻿using CurriculumVitae.Common.DAO;
+using CurriculumVitae.Common.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace CurriculumVitae.Dal.Data
 {
     public interface IEmploymentHistoryData
     {
-        Task<IEnumerable<EmploymentHistoryDto>> GetEmploymentHistory();
+        Task<IEnumerable<EmploymentHistoryDao>> GetEmploymentHistory();
 
-        Task<IEnumerable<EmploymentHistoryDto>> GetEmploymentHistory(int id);
+        Task<IEnumerable<EmploymentHistoryDao>> GetEmploymentHistory(int id);
 
-        Task InsertEmploymentHistory(EmploymentHistoryDto empHistory);
+        Task InsertEmploymentHistory(EmploymentHistoryDao empHistory);
     }
 }
