@@ -1,0 +1,42 @@
+﻿@using CurriculumVitae.Common.DTO;
+@inject Microsoft.Extensions.Localization.IStringLocalizer<App> Localize
+<h3>EmploymentHistory</h3>
+
+@if (_listEmploymentHistory == null)
+{
+    <Loading IsVisible=true />
+}
+else
+{
+    <tbody>
+        @* _listEmploymentHistory - list of employment history objects *@
+        @foreach (var empHistory in _listEmploymentHistory)
+        {
+
+            <tr>
+                <td>@Localize["CompanyName"]</td>
+                <td>@empHistory.Company</td>
+            </tr>
+            <tr>
+                <td>@Localize["Dates"]</td>
+                <td>@empHistory.Dates</td>
+            </tr>
+        }
+    </tbody>
+}
+
+
+
+@code {
+    private List<EmploymentHistoryDto>? _listEmploymentHistory;
+
+    [Parameter, EditorRequired]
+    public List<EmploymentHistoryDto>? ListEmploymentHistory
+    {
+        get { return _listEmploymentHistory; }
+        set
+        {
+            _listEmploymentHistory = value;
+        }
+    }
+}

@@ -120,8 +120,14 @@
   <data name="Address" xml:space="preserve">
     <value>Address fr-FR</value>
   </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company fr-FR</value>
+  </data>
   <data name="DateOfBirth" xml:space="preserve">
     <value>Date of Birth fr-FR</value>
+  </data>
+  <data name="Dates" xml:space="preserve">
+    <value>Dates fr-FR</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email fr-FR</value>

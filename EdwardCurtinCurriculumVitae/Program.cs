@@ -22,6 +22,7 @@ if (appLanguage != null)
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped<ICvOwnerService, CvOwnerService>();
+builder.Services.AddScoped<IEmploymentHistoryService, EmploymentHistoryService>();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7131/api/") });
 

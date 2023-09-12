@@ -1,2 +1,28 @@
 ﻿@page "/"
-<CVOwner/>
+@using CurriculumVitae.Common.DTO;
+@using EdwardCurtinCurriculumVitae.Services;
+
+<CVOwner CvOwners="@cvOwners"></CVOwner>
+<EmploymentHistory ListEmploymentHistory="@employmentHistoryList"></EmploymentHistory>
+
+@code{
+    [Inject]
+    ICvOwnerService CVOwnerService { get; set; }
+
+    [Inject]
+    IEmploymentHistoryService EmploymentHistoryService { get; set; }
+
+    private List<EmploymentHistoryDto> employmentHistoryList;
+
+    private List<CVOwnerDto>? cvOwners;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var cvOwner = await CVOwnerService.GetCvOwners();
+        cvOwners = new List<CVOwnerDto>(cvOwner);
+
+        var empHistory = await EmploymentHistoryService.GetEmploymentHistory(1);
+        employmentHistoryList = new List<EmploymentHistoryDto>(empHistory);
+    }
+}
+
