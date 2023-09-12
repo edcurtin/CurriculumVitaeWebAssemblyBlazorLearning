@@ -23,9 +23,12 @@ namespace CurriculumVitae.Dal.Data
             return await _sql.GetData<EmploymentHistoryDao>("dbo.sp_EmploymentHistory_GetAll");
         }
 
-        public Task<IEnumerable<EmploymentHistoryDao>> GetEmploymentHistory(int id)
+        public async Task<IEnumerable<EmploymentHistoryDao>> GetEmploymentHistory(int id)
         {
-            throw new NotImplementedException();
+            DynamicParameters p = new DynamicParameters();
+            p.Add(@"id", id);
+            return await _sql.GetData<EmploymentHistoryDao>("dbo.sp_EmploymentHistory_GetById", p);
+
         }
 
         public async Task InsertEmploymentHistory(EmploymentHistoryDao empHistory)

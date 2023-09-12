@@ -13,10 +13,10 @@ namespace CurriculumVitae.Dal.Data
             _config = config;
         }
 
-        public async Task<IEnumerable<T>> GetData<T>(string storedProcedure, string connectionStringName = "Default")
+        public async Task<IEnumerable<T>> GetData<T>(string storedProcedure, DynamicParameters data, string connectionStringName = "Default")
         {
             using var connection = new SqlConnection(_config.GetConnectionString(connectionStringName));
-            var results = await connection.QueryAsync<T>(storedProcedure, connection);
+            var results = await connection.QueryAsync<T>(storedProcedure, data, null, null, System.Data.CommandType.StoredProcedure);
             return results;
         }
 

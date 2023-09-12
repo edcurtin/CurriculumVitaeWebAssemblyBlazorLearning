@@ -8,6 +8,8 @@ namespace CurriculumVitae.Common.DAO
 {
     public class EmploymentHistoryDao
     {
+        public int Id { get; set; }
+
         public int Owner { get; set; }
 
         public string Role { get; set; }
