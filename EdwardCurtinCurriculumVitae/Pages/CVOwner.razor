@@ -19,30 +19,30 @@ else
                 <th><h2>@_cvOwners[0].Name</h2></th>
             </tr>
             <tr>
-                <td>@Localize["Address"]</td>
+                <link href="~/css/common.css" rel="stylesheet" />
+                <td class="shared-column">@Localize["Address"]</td>
                 <td>@_cvOwners[0].Address</td>
             </tr>
             <tr>
-                <td>@Localize["DateOfBirth"]</td>
+                <td class="shared-column">@Localize["DateOfBirth"]</td>
                 <td>@_cvOwners[0].DateOfBirth.ToShortDateString()</td>
             </tr>
             <tr>
-                <td>@Localize["Email"]</td>
+                <td class="shared-column">@Localize["Email"]</td>
                 <td><a href="mailto:@_cvOwners[0].Email">@_cvOwners[0].Email</a></td>
             </tr>
             <tr>
-                <td>@Localize["LinkedIn"]</td>
+                <td class="shared-column">@Localize["LinkedIn"]</td>
                 <td><a href="@_cvOwners[0].LinkedIn">@_cvOwners[0].LinkedIn</a></td>
             </tr>
             <tr>
-                <td>@Localize["WorkingModel"]</td>
+                <td class="shared-column">@Localize["WorkingModel"]</td>
                 <td>@_cvOwners[0].WorkingModel</td>
             </tr>
 
         </table>
     }
 }
-
 
 @code {
     private List<CVOwnerDto>? _cvOwners;

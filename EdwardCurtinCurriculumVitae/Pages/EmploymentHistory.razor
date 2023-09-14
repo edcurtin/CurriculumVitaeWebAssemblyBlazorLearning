@@ -1,5 +1,7 @@
 ﻿@using CurriculumVitae.Common.DTO;
 @inject Microsoft.Extensions.Localization.IStringLocalizer<App> Localize
+
+<link href="~/css/common.css" rel="stylesheet" />
 <h3>EmploymentHistory</h3>
 
 @if (_listEmploymentHistory == null)
@@ -14,18 +16,16 @@ else
         {
 
             <tr>
-                <td>@Localize["CompanyName"]</td>
+                <td class="shared-column">@Localize["CompanyName"]</td>
                 <td>@empHistory.Company</td>
             </tr>
             <tr>
-                <td>@Localize["Dates"]</td>
+                <td class ="shared-column">@Localize["Dates"]</td>
                 <td>@empHistory.Dates</td>
             </tr>
         }
     </tbody>
 }
-
-
 
 @code {
     private List<EmploymentHistoryDto>? _listEmploymentHistory;
