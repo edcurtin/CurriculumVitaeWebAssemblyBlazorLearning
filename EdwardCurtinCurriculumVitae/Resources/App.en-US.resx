@@ -132,6 +132,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email En-US</value>
   </data>
+  <data name="EmploymentHistory" xml:space="preserve">
+    <value>Employment History En-US</value>
+  </data>
   <data name="LinkedIn" xml:space="preserve">
     <value>LinkedIn En-US</value>
   </data>
